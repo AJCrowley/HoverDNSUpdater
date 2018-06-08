@@ -1,5 +1,5 @@
 // import config data
-require('./config');
+const config = require('./config');
 
 // third party modules
 const async = require('async');
