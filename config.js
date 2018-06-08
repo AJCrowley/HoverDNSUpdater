@@ -1,4 +1,4 @@
 config = {
-    'user': 'myusername',
-    'pass': 'mypassword'
+    'user': 'user',
+    'pass': 'pass'
 }

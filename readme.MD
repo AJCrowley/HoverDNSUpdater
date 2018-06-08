@@ -1,17 +1,59 @@
 # Hover Dynamic DNS Host Updater
 
+## Description
+
 A simple script to update a hover domain with the current computer's IP.
 
-Edit config.js with your account login info, and the domain that you wish to control.
+## Usage
 
-Put it in your scheduled tasks to keep the host up to date.
+Edit config.js with your account login info.
+
+Put it in your scheduled tasks or crontab to keep the host up to date.
 
 ```
 Usage:
 node index [domain] [subdomain]
 ```
 
-So for example, the following will updated the domain for test.thiscomputer.com
-```node index thiscomputer.com test```
+So for example, the following will update the A record for the domain test.thiscomputer.com
 
-This will set the A record for the domain
+```
+node index thiscomputer.com test
+```
+
+## IMPORTANT NOTE
+The hover-api library stopped working with their login system. As such, I have had to modify the file:
+```node_modules/hover-api/index.js```
+
+If you experience problems related to logging into the API, open up this file and replace the _hoverRequest function with the following:
+
+```js
+function _hoverRequest (method, path, body, cb) {
+        // Check if previously logged in
+        if (_loggedin) return _hoverApiRequest(method, path, body, cb);
+
+        // Issue login request with provided username / password
+        r.post({
+            url: baseUrl + '/login',
+            form: {
+                username: username,
+                password: password
+            }
+        }, _rCallback(function (err) {
+            if(err) {
+                if(cb != undefined) {
+                    return cb(err)
+                } else {
+                    console.error(err);
+                    return;
+                }
+            }
+
+            // Note logged in / forward request
+            _loggedin = true;
+            _hoverApiRequest(method, path, body, cb);
+        }));
+    }
+```
+
+This should resolve the API login issue.
