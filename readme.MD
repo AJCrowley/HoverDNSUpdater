@@ -8,14 +8,16 @@ A simple script to update a hover domain with the current computer's IP.
 
 Edit config.js with your account login info.
 
-Put it in your scheduled tasks or crontab to keep the host up to date.
+Put it in your scheduled tasks or crontab to keep the host up to date. I've set it to run hourly, but set it up however works best for you.
+
+Also, through your Hover control panel, I'd recommend setting the TTL on the domain to the minimum (15 mins).
 
 ```
 Usage:
 node index [domain] [subdomain]
 ```
 
-So for example, the following will update the A record for the domain test.thiscomputer.com
+So for example, the following will update the A record for the domain test.thiscomputer.com. If there's no entry for the specified subdomain, this script will create one.
 
 ```
 node index thiscomputer.com test
