@@ -23,7 +23,7 @@ So for example, the following will update the A record for the domain test.thisc
 node index thiscomputer.com test
 ```
 
-## IMPORTANT NOTE
+## IMPORTANT NOTE / Hover API Login Not Working
 The hover-api library stopped working with their login system. As such, I have had to modify the file:
 ```node_modules/hover-api/index.js```
 
