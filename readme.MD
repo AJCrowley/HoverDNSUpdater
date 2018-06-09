@@ -8,6 +8,12 @@ A simple script to update a hover domain with the current computer's IP.
 
 Edit config.js with your account login info.
 
+To install dependencies, from the folder that you've cloned/downloaded the repo to:
+
+```
+npm install
+```
+
 Put it in your scheduled tasks or crontab to keep the host up to date. I've set it to run hourly, but set it up however works best for you.
 
 Also, through your Hover control panel, I'd recommend setting the TTL on the domain to the minimum (15 mins).
