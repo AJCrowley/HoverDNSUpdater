@@ -30,7 +30,6 @@ if(domain === undefined || subdomain === undefined) {
                 if(entry.content === ip) {
                     // they do match, we don't need to do anything else
                     console.log(`IP unchanged from ${ip}, no update necessary...`);
-                    return;
                 } else {
                     // new IP, let the user know
                     console.log(`IP on record (${entry.content}) does not match current IP (${ip}), removing old A record...`);
