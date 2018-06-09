@@ -30,7 +30,6 @@ if(domain === undefined || subdomain === undefined) {
                 if(entry.content === ip) {
                     // they do match, we don't need to do anything else
                     console.log(`IP unchanged from ${ip}, no update necessary...`);
-                    // exit
                     return;
                 } else {
                     // new IP, let the user know
