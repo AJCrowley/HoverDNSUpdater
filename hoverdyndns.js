@@ -11,7 +11,7 @@ if(domain === undefined || subdomain === undefined) {
     console.error('Usage: node index [parent domain] [subdomain]');
 } else {
     // we have everything we need, get our IP address
-    console.log('Checking external IP...');
+    console.info('Checking external IP...');
     moira.getIP((err, ip, service) => {
         if(err) {
             // we've got an error back, throw it on the console and return
@@ -19,7 +19,7 @@ if(domain === undefined || subdomain === undefined) {
             return;
         }
         // output result to console
-        console.log(`Received result from ${service}: ${ip}...`);
+        console.info(`Received result from ${service}: ${ip}...`);
         // get list of domains from Hover
         hover.getDomainDns(domain, (err, res) => {
             // filter results for our subdomain
@@ -29,27 +29,27 @@ if(domain === undefined || subdomain === undefined) {
                 // check if the existing A record already matches our IP
                 if(entry.content === ip) {
                     // they do match, we don't need to do anything else
-                    console.log(`IP unchanged from ${ip}, no update necessary...`);
+                    console.info(`IP unchanged from ${ip}, no update necessary...`);
                 } else {
                     // new IP, let the user know
-                    console.log(`IP on record (${entry.content}) does not match current IP (${ip}), removing old A record...`);
+                    console.info(`IP on record (${entry.content}) does not match current IP (${ip}), removing old A record...`);
                     // remove old A record
                     hover.removeDns(entry.id, () => {
-                        console.log('Creating new A record...');
+                        console.info('Creating new A record...');
                         // create new A record with current IP
                         hover.createARecord(domain, subdomain, ip, () => {
                             // all done!
-                            console.log(`A record for ${subdomain}.${domain}: ${ip}`);
+                            console.info(`A record for ${subdomain}.${domain}: ${ip}`);
                         });
                     });
                 }
             } else {
                 // this is a new A record
-                console.log(`No entry for domain ${subdomain}.${domain}, creating A record for ${ip}...`);
+                console.info(`No entry for domain ${subdomain}.${domain}, creating A record for ${ip}...`);
                 // create new A record with current IP
                 hover.createARecord(domain, subdomain, ip, () => {
                     // all done!
-                    console.log(`A record for ${subdomain}.${domain}: ${ip}`);
+                    console.info(`A record for ${subdomain}.${domain}: ${ip}`);
                 });
             }
         });
