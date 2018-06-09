@@ -26,6 +26,7 @@ if(domain === undefined || subdomain === undefined) {
             const entry = res[0].entries.filter((entry) => entry.name === subdomain)[0];
             // check if there's an existing entry
             if(entry !== undefined) {
+                // check if the existing A record already matches our IP
                 if(entry.content === ip) {
                     // they do match, we don't need to do anything else
                     console.log(`IP unchanged from ${ip}, no update necessary...`);
