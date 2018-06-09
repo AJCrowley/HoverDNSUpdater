@@ -5,9 +5,12 @@ const hover = require('hover-api')(config.user, config.pass);
 const domain = process.argv[2];
 const subdomain = process.argv[3];
 
+// check that we've been passed a domain and subdomain
 if(domain == undefined || subdomain == undefined) {
+    // params not passed, provide usage notification to user
     console.error('Usage: node index parentdomain.com subdomain');
 } else {
+    // we have everything we need, get our IP address
     console.log('Checking external IP');
     moira.getIP((err, ip, service) => {
         if(err) {
