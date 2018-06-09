@@ -11,7 +11,7 @@ if(domain == undefined || subdomain == undefined) {
     console.error('Usage: node index parentdomain.com subdomain');
 } else {
     // we have everything we need, get our IP address
-    console.log('Checking external IP');
+    console.log('Checking external IP...');
     moira.getIP((err, ip, service) => {
         if(err) {
             // we've got an error back, throw it on the console and return
