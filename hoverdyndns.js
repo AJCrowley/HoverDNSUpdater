@@ -21,7 +21,7 @@ if(domain == undefined || subdomain == undefined) {
         // output result to console
         console.log(`Received result from ${service}: ${ip}...`);
         // get list of domains from Hover
-        hover.getDomainDns(domain, (ptr, res) => {
+        hover.getDomainDns(domain, (err, res) => {
             // filter results for our subdomain
             const entry = res[0].entries.filter((entry) => entry.name === subdomain)[0];
             // check IP on A record vs our recent request, do they match?
