@@ -79,8 +79,8 @@ if(domain === undefined || subdomain === undefined) {
             }
         });
     };
-    // were we passed an IP to use? User moira if not, otherwise just callback
-    const obtainIp = ip === undefined ? (callback) => moira.getIP(callback) : (callback) => callback();
+    // were we passed an IP to use? Use moira if not, just callback if we already have an IP
+    const getIp = ip === undefined ? (callback) => moira.getIP(callback) : (callback) => callback();
     // call our main function
-    obtainIp(processDns);
+    getIp(processDns);
 }
