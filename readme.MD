@@ -57,6 +57,7 @@ function _hoverRequest (method, path, body, cb) {
         }
     }, _rCallback(function (err) {
         if(err) {
+            // edit: check if cb exists, otherwise just dump to console
             if(cb !== undefined) {
                 return cb(err)
             } else {
