@@ -49,6 +49,7 @@ function _hoverRequest (method, path, body, cb) {
         if (_loggedin) return _hoverApiRequest(method, path, body, cb);
 
         // Issue login request with provided username / password
+				// edit: use request.post with form instead of just request with json
         r.post({
             url: baseUrl + '/login',
             form: {
@@ -57,7 +58,7 @@ function _hoverRequest (method, path, body, cb) {
             }
         }, _rCallback(function (err) {
             if(err) {
-                if(cb != undefined) {
+                if(cb !== undefined) {
                     return cb(err)
                 } else {
                     console.error(err);
