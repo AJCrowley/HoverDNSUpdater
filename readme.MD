@@ -48,8 +48,7 @@ function _hoverRequest (method, path, body, cb) {
         // Check if previously logged in
         if (_loggedin) return _hoverApiRequest(method, path, body, cb);
 
-        // Issue login request with provided username / password
-				// edit: use request.post with form instead of just request with json
+        // edit: issue login request with request.post with form instead of just request with json
         r.post({
             url: baseUrl + '/login',
             form: {
