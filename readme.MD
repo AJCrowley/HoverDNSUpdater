@@ -45,31 +45,31 @@ If you experience problems related to logging into the API, open up this file an
 
 ```js
 function _hoverRequest (method, path, body, cb) {
-        // Check if previously logged in
-        if (_loggedin) return _hoverApiRequest(method, path, body, cb);
+    // Check if previously logged in
+    if (_loggedin) return _hoverApiRequest(method, path, body, cb);
 
-        // edit: issue login request with request.post with form instead of just request with json
-        r.post({
-            url: baseUrl + '/login',
-            form: {
-                username: username,
-                password: password
+    // edit: issue login request with request.post with form instead of just request with json
+    r.post({
+        url: baseUrl + '/login',
+        form: {
+            username: username,
+            password: password
+        }
+    }, _rCallback(function (err) {
+        if(err) {
+            if(cb !== undefined) {
+                return cb(err)
+            } else {
+                console.error(err);
+                return;
             }
-        }, _rCallback(function (err) {
-            if(err) {
-                if(cb !== undefined) {
-                    return cb(err)
-                } else {
-                    console.error(err);
-                    return;
-                }
-            }
+        }
 
-            // Note logged in / forward request
-            _loggedin = true;
-            _hoverApiRequest(method, path, body, cb);
-        }));
-    }
+        // Note logged in / forward request
+        _loggedin = true;
+        _hoverApiRequest(method, path, body, cb);
+    }));
+}
 ```
 
 This should resolve the API login issue.
