@@ -22,13 +22,19 @@ Also, through your Hover control panel, I'd recommend setting the TTL on the dom
 
 ```
 Usage:
-node index [domain] [subdomain]
+node index [domain] [subdomain] [*ip]
 ```
 
 So for example, the following will update the A record for the domain test.thiscomputer.com. If there's no entry for the specified subdomain, this script will create one.
 
 ```
 node index thiscomputer.com test
+```
+
+You can also optionally specify an IP, rather than using the built in IP detection:
+
+```
+node index thiscomputer.com test 127.0.0.1
 ```
 
 ## IMPORTANT NOTE / Hover API Login Not Working
