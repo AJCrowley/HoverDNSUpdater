@@ -1,7 +1,8 @@
 import config from './config';
 import moira from 'moira';
+import hoverApi from 'hover-api';
 
-const hover = require('hover-api')(config.user, config.pass);
+const hover = hoverApi(config.user, config.pass);
 const domain = process.argv[2];
 const subdomain = process.argv[3];
 let ip = process.argv[4];
