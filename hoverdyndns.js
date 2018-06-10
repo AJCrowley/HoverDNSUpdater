@@ -42,11 +42,6 @@ if(domain === undefined || subdomain === undefined) {
             } else {
                 // filter results for our subdomain
                 const entry = res[0].entries.filter((entry) => entry.name === subdomain)[0];
-                // function to notify user that we're done
-                const finished = (domain, subdomain, ip) => {
-                    // just notify user. If there were any other cleanup to do, we'd put it here also
-                    console.info(`A record for ${subdomain}.${domain}: ${ip}`);
-                };
                 // next step depends on whether this is an update or a completely new A record
                 const updateRecords = entry === undefined ? (entry, callback) => {
                     // no A record exists, notify user
@@ -73,8 +68,8 @@ if(domain === undefined || subdomain === undefined) {
                     console.info('Creating new A record...');
                     // create new A record with current IP
                     hover.createARecord(domain, subdomain, ip, () => {
-                        // all done!
-                        finished(domain, subdomain, ip);
+                        // all done! just notify user. If there were any other cleanup to do, we'd put it here also
+                        console.info(`A record for ${subdomain}.${domain}: ${ip}`);
                     });
                 });
             }
