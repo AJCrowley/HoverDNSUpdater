@@ -87,14 +87,17 @@ This should resolve the API login issue.
 If you wish to set the TTL to any value other than 900 (15 mins) on any new or updated A records, in the same file replace the createARecord function with the following:
 
 ```js
-function createARecord (domain, subdomain, ip, cb) {
+// edit: add ttl as a parameter to this function
+function createARecord (domain, subdomain, ip, cb, ttl) {
     var body = {
         name: subdomain,
         type: 'A',
         content: ip,
-        // edit: specify default TTL of whatever you wish, let's go with 1 min
-        ttl: 60
+        // edit: specify default TTL
+        ttl: ttl
     };
     _hoverRequest('POST', '/domains/' + domain + '/dns', body, cb);
 }
 ```
+
+You can now edit the TTL value in config.js along with your login data in order to specify the default TTL, I have mine set to 180 (3 mins), but set yours to whatever suits you

@@ -75,7 +75,7 @@ if(!domain || !subdomain) {
                     hover.createARecord(domain, subdomain, ip, () => {
                         // all done! just notify user. If there were any other cleanup to do, we'd put it here also
                         console.info(`A record for ${subdomain}.${domain}: ${ip}`);
-                    });
+                    }, config.ttl);
                 });
             }
         });
