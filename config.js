@@ -1,5 +1,5 @@
 export default {
     "user": "your_username",
     "pass": "your_password",
-    "ttl": 60
+    "ttl": 180
 }
