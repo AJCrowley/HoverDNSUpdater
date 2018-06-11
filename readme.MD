@@ -84,7 +84,7 @@ function _hoverRequest (method, path, body, cb) {
 
 This should resolve the API login issue.
 
-If you wish to default the TTL to any value other than 900 (15 mins) on any new A records, in the same file replace the createARecord function with the following:
+If you wish to set the TTL to any value other than 900 (15 mins) on any new or updated A records, in the same file replace the createARecord function with the following:
 
 ```js
 function createARecord (domain, subdomain, ip, cb) {
