@@ -37,6 +37,15 @@ You can also optionally specify an IP, rather than using the built in IP detecti
 node index thiscomputer.com test 127.0.0.1
 ```
 
+If you wish to specify a wildcard, make sure to enclose it in quotes so it doesn't try to recurse the filesystem as input:
+
+```
+# set dns wildcard so any undefined subdomains point to this address
+node index thiscomputer.com '*'
+# set entry for the base domain
+node index thiscomputer.com @
+```
+
 ## IMPORTANT NOTE / Hover API Login Not Working
 The hover-api library stopped working with their login system. As such, I have had to modify the file:
 ```node_modules/hover-api/index.js```
