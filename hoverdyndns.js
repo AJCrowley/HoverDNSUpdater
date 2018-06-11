@@ -30,8 +30,16 @@ if(domain === undefined || subdomain === undefined) {
             // output result to console
             console.info(`Received result from ${service}: ${ip}...`);
         } else {
-            // an IP was provided
-            console.info(`Using user specified IP for ${ip}...`);
+            // an IP was provided, check that it's valid with a regexp
+            if(/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ip)) {
+                // IP provided is valid
+                console.info(`Using user specified IP for ${ip}...`);
+            } else {
+                // invalid IP provided
+                console.error(`${ip} is not a valid IP address...`);
+                // exit
+                return;
+            }
         }
         // get list of domains from Hover
         hover.getDomainDns(domain, (err, res) => {

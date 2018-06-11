@@ -18,7 +18,7 @@ npm install
 
 Put it in your scheduled tasks or crontab to keep the host up to date. I've set it to run hourly, but set it up however works best for you.
 
-Also, through your Hover control panel, I'd recommend setting the TTL on the domain to the minimum (15 mins).
+Also, through your Hover control panel, I'd recommend setting the TTL on the domain to the minimum (5 mins).
 
 ```
 Usage:
