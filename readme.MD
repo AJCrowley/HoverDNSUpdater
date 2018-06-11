@@ -8,7 +8,7 @@ A simple script to update a hover domain with the current computer's IP. I could
 
 If you don't already have it, you'll need to install node.js.
 
-Edit config.js with your account login info.
+Edit ```config.js``` with your account login info.
 
 To install dependencies, from the folder that you've cloned/downloaded the repo to:
 
