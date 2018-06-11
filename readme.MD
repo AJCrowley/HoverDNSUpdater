@@ -91,10 +91,11 @@ function createARecord (domain, subdomain, ip, cb, ttl) {
     var body = {
         name: subdomain,
         type: 'A',
-        content: ip,
-        // edit: specify default TTL
-        ttl: ttl
+        content: ip
     };
+    if(ttl) {
+        body.ttl = ttl;
+    }
     _hoverRequest('POST', '/domains/' + domain + '/dns', body, cb);
 }
 ```
