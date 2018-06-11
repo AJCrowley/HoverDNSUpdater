@@ -2,7 +2,7 @@
 
 ## Description
 
-A simple script to update a hover domain with the current computer's IP.
+A simple script to update a hover domain with the current computer's IP. I could have easily written this in ES5 javascript, but I like ES6, and it's my project, so it uses babel-register to run ES6 code on Node.js with the need to transpile. The ```index.js``` file loads babel-register, then includes our ES6 code file, which contains all of our logic, ```hoverdyndns.js```.
 
 ## Usage
 
@@ -18,7 +18,7 @@ npm install
 
 Put it in your scheduled tasks or crontab to keep the host up to date. I've set it to run hourly, but set it up however works best for you.
 
-Instructions are included at the end of this file for how to set the TTL on the A record, controlled through a value in the config.js file that also holds your account login info. If you don't wish to make the modification to set this up, I'd recommend decreasing the TTL for the record in your Hover control panel (5 mins is the lowest allowed through their CP, but through the config file, you can set it to any value you wish, I have it defaulted to 3 mins). Since you likely have to perform the other mod to the hover-api library to get anything at all to work due to issues with their API login system and javascript library, it's worth doing the mod so that you can set TTL to whatever you wish.
+Instructions are included at the end of this file for how to set the TTL on the A record, controlled through a value in the ```config.js``` file that also holds your account login info. If you don't wish to make the modification to set this up, I'd recommend decreasing the TTL for the record in your Hover control panel (5 mins is the lowest allowed through their CP, but through the config file, you can set it to any value you wish, I have it defaulted to 3 mins). Since you likely have to perform the other mod to the hover-api library to get anything at all to work due to issues with their API login system and javascript library, it's worth doing the mod so that you can set TTL to whatever you wish.
 
 ```
 Usage:
@@ -47,10 +47,9 @@ node index thiscomputer.com @
 ```
 
 ## IMPORTANT NOTE / Hover API Login Not Working
-The hover-api library stopped working with their login system. As such, I have had to modify the file:
-```node_modules/hover-api/index.js```
+The hover-api library stopped working with their login system. As such, I have had to modify the file ```node_modules/hover-api/index.js```.
 
-If you experience problems related to logging into the API, open up this file and replace the _hoverRequest function with the following:
+If you experience problems related to logging into the API, open up this file and replace the ```_hoverRequest``` function with the following:
 
 ```js
 function _hoverRequest (method, path, body, cb) {
@@ -84,7 +83,7 @@ function _hoverRequest (method, path, body, cb) {
 
 This should resolve the API login issue.
 
-If you wish to set the TTL to any value other than 900 (15 mins) on any new or updated A records, in the same file replace the createARecord function with the following:
+If you wish to set the TTL to any value other than 900 (15 mins) on any new or updated A records, in the same file replace the ```createARecord``` function with the following:
 
 ```js
 // edit: add ttl as a parameter to this function
@@ -100,4 +99,4 @@ function createARecord (domain, subdomain, ip, cb, ttl) {
 }
 ```
 
-You can now edit the TTL value in config.js along with your login data in order to specify the default TTL, I have mine set to 180 (3 mins), but set yours to whatever suits you.
+You can now edit the TTL value in ```config.js``` along with your login data in order to specify the default TTL, I have mine set to 180 (3 mins), but set yours to whatever suits you.
