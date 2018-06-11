@@ -10,9 +10,9 @@ let ip = process.argv[4];
 // check that we've been passed a domain and subdomain
 if(domain === undefined || subdomain === undefined) {
     // params not passed, provide usage notification to user
-    console.error('Usage: node index [parent domain] [subdomain] [*ip]');
-    console.error('IP parameter is optional, if not specified, this script will automatically detect our current IP');
-    console.error('parent domain and subdomain params are both required')
+    console.info('Usage: node index [parent domain] [subdomain] [*ip]');
+    console.info('IP parameter is optional, if not specified, this script will automatically detect our current IP');
+    console.info('parent domain and subdomain params are both required')
 } else {
     // encapsulate actions in a function
     const processDns = (err, moiraIp, service) => {
