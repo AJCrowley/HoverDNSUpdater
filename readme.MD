@@ -2,7 +2,7 @@
 
 ## Description
 
-A simple script to update a hover domain with the current computer's IP. I could have easily written this in ES5 javascript, but I like ES6, and it's my project, so it uses babel-register to run ES6 code on Node.js with the need to transpile. The ```index.js``` file loads babel-register, then includes our ES6 code file, which contains all of our logic, ```hoverdyndns.js```.
+A simple script to update a hover domain with the current computer's IP. I could have easily written this in ES5 javascript, but I like ES6, and it's my project, so it uses babel-register to run ES6 code on Node.js without the need to transpile. The ```index.js``` file loads babel-register, then includes our ES6 code file, which contains all of our logic, ```hoverdyndns.js```.
 
 ## Usage
 
