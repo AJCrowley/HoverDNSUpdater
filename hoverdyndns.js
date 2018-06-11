@@ -33,7 +33,7 @@ if(domain === undefined || subdomain === undefined) {
             // an IP was provided, check that it's valid with a regexp
             if(/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ip)) {
                 // IP provided is valid
-                console.info(`Using user specified IP for ${ip}...`);
+                console.info(`Using user specified IP of ${ip}...`);
             } else {
                 // invalid IP provided
                 console.error(`${ip} is not a valid IP address...`);
