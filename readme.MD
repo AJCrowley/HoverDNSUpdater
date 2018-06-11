@@ -18,7 +18,7 @@ npm install
 
 Put it in your scheduled tasks or crontab to keep the host up to date. I've set it to run hourly, but set it up however works best for you.
 
-Also, through your Hover control panel, I'd recommend setting the TTL on the domain to the minimum (5 mins).
+Instructions are included at the end of this file for how to set the TTL on the A record, controlled through a value in the config.js file that also holds your account login info. If you don't wish to make the modification to set this up, I'd recommend decreasing the TTL for the record in your Hover control panel (5 mins is the lowest allowed through their CP, but through the config file, you can set it to any value you wish, I have it defaulted to 3 mins). Since you likely have to perform the other mod to the hover-api library to get anything at all to work due to issues with their API login system and javascript library, it's worth doing the mod so that you can set TTL to whatever you wish.
 
 ```
 Usage:
