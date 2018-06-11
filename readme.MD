@@ -100,4 +100,4 @@ function createARecord (domain, subdomain, ip, cb, ttl) {
 }
 ```
 
-You can now edit the TTL value in config.js along with your login data in order to specify the default TTL, I have mine set to 180 (3 mins), but set yours to whatever suits you
+You can now edit the TTL value in config.js along with your login data in order to specify the default TTL, I have mine set to 180 (3 mins), but set yours to whatever suits you.
