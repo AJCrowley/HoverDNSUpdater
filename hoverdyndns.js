@@ -5,19 +5,18 @@ import hoverApi from 'hover-api';
 const hover = hoverApi(config.user, config.pass);
 const domain = process.argv[2];
 const subdomain = process.argv[3];
-let ip = process.argv[4];
 
 // check that we've been passed a domain and subdomain
-if(domain === undefined || subdomain === undefined) {
+if(!domain || !subdomain) {
     // params not passed, provide usage notification to user
     console.info('Usage: node index [parent domain] [subdomain] [*ip]');
     console.info('IP parameter is optional, if not specified, this script will automatically detect our current IP');
     console.info('parent domain and subdomain params are both required')
 } else {
     // encapsulate actions in a function
-    const processDns = (err, moiraIp, service) => {
+    const processDns = (err, ip, service) => {
         // if we got a service back, this is a callback from moira's getIP function
-        if(service !== undefined) {
+        if(service) {
             // check for errors
             if(err) {
                 // we've got an error back, throw it on the console and return
@@ -25,8 +24,6 @@ if(domain === undefined || subdomain === undefined) {
                 // nothing to do, exit
                 return;
             }
-            // set our IP
-            ip = moiraIp;
             // output result to console
             console.info(`Received result from ${service}: ${ip}...`);
         } else {
@@ -44,7 +41,7 @@ if(domain === undefined || subdomain === undefined) {
         // get list of domains from Hover
         hover.getDomainDns(domain, (err, res) => {
             // did we get any results back?
-            if(res === undefined) {
+            if(!res) {
                 // no, this is not our domain
                 console.error(`The domain ${domain} is not on your Hover account...`);
             } else {
@@ -83,8 +80,8 @@ if(domain === undefined || subdomain === undefined) {
             }
         });
     };
-    // were we passed an IP to use? Use moira if not, just callback if we already have an IP
-    const getIp = ip === undefined ? (callback) => moira.getIP(callback) : (callback) => callback();
+    // were we passed an IP to use? Use moira if not, otherwise just callback with user supplied value
+    const getIp = process.argv[4] === undefined ? (callback) => moira.getIP(callback) : (callback) => callback(undefined, process.argv[4], undefined);
     // call our main function
     getIp(processDns);
 }

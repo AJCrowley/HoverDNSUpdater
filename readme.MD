@@ -74,3 +74,18 @@ function _hoverRequest (method, path, body, cb) {
 ```
 
 This should resolve the API login issue.
+
+If you wish to default the TTL to the lowest value on any new A records, in the same file replace the createARecord function with the following:
+
+```js
+function createARecord (domain, subdomain, ip, cb) {
+    var body = {
+        name: subdomain,
+        type: 'A',
+        content: ip,
+        // edit: specify default TTL of whatever you wish, let's go with 1 min
+        ttl: 60
+    };
+    _hoverRequest('POST', '/domains/' + domain + '/dns', body, cb);
+}
+```
