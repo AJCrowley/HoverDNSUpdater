@@ -5,7 +5,7 @@
   "homepage": "https://github.com/AJCrowley/HoverDNSUpdater",
   "repository": {
     "type": "git",
-    "url" : "https://github.com/AJCrowley/HoverDNSUpdater"
+    "url": "https://github.com/AJCrowley/HoverDNSUpdater"
   },
   "main": "index.js",
   "dependencies": {
