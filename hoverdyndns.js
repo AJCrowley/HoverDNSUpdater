@@ -20,7 +20,7 @@ if(!domain || !subdomain) {
             // check for errors
             if(err) {
                 // we've got an error back, throw it on the console and return
-                console.error(err);
+                console.error('ERROR', err);
                 // nothing to do, exit
                 return;
             }
@@ -40,6 +40,12 @@ if(!domain || !subdomain) {
         }
         // get list of domains from Hover
         hover.getDomainDns(domain, (err, res) => {
+            if(err) {
+                // we've got an error back, throw it on the console and return
+                console.error('ERROR', err);
+                // nothing to do, exit
+                return;
+            }
             // did we get any results back?
             if(!res) {
                 // no, this is not our domain
