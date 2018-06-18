@@ -10,7 +10,7 @@ const subdomain = process.argv[3];
 if(!domain || !subdomain) {
     // params not passed, provide usage notification to user
     console.info('Usage: node index [parent domain] [subdomain] [*ip]');
-    console.info('IP parameter is optional, if not specified, this script will automatically detect our current IP');
+    console.info('IP parameter is optional, if not specified, this script will automatically detect your current IP');
     console.info('parent domain and subdomain params are both required')
 } else {
     // encapsulate actions in a function
